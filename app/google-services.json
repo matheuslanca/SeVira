@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "694732593897",
+    "firebase_url": "https://sevira-6547b.firebaseio.com",
+    "project_id": "sevira-6547b",
+    "storage_bucket": "sevira-6547b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694732593897:android:eb3f62ac3e590af3",
+        "android_client_info": {
+          "package_name": "com.subwayinovators.sevira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694732593897-oolsu3a8ucqur5ee8vhlaf71a50s9vko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5PPjUrNJa9SASj_RACAhbT5fUVd8Tz3Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694732593897:android:c7ec25b47cc744c5",
+        "android_client_info": {
+          "package_name": "com.subwayinovators.sevira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694732593897-oolsu3a8ucqur5ee8vhlaf71a50s9vko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5PPjUrNJa9SASj_RACAhbT5fUVd8Tz3Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

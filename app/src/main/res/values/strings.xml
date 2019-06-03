@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">SeVira</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="estacao">Escolha a estação: </string>
+    <string name="linha_azul">Linha 1 - Azul</string>
+    <string name="linha_verde">Linha 2 - Verde</string>
+    <string name="linha_vermelha">Linha 3 - Vermelha</string>
+    <string name="linha_amarela">Linha 4 - Amarela</string>
+    <string name="estado1">Operando Normalmente</string>
+    <string name="estado2">Velocidade Reduzida</string>
+    <string name="estado3">Paralisada</string>
+    <string name="senha">Senha</string>
+    <string name="email">E-mail</string>
+    <string name="confSenha">Confirmar Senha</string>
+    <string name="username">Nome de Usuário</string>
+    <string name="cadastrese">Cadastre-se</string>
+    <string name="pular">Pular</string>
+    <string name="login">Login</string>
+    <string name="questao1">Em que linha você está?</string>
+    <string name="questao2">Em qual estação?</string>
+    <string name="esqueci_minha_senha">Esqueci minha senha</string>
+    <string name="perfil">Perfil</string>
+
+    <string-array name="estacoes_linhaazul">
+        <item>Tucuruvi</item>
+        <item>Parada Inglesa</item>
+        <item>Jardim São Paulo</item>
+        <item>Santana</item>
+        <item>Carandiru</item>
+        <item>Portuguesa-Tietê</item>
+        <item>Armênia</item>
+        <item>Tiradentes</item>
+        <item>Luz</item>
+        <item>São Bento</item>
+        <item>Sé</item>
+        <item>Liberdade</item>
+        <item>São Joaquim</item>
+        <item>Vergueiro</item>
+        <item>Paraíso</item>
+        <item>Ana Rosa</item>
+        <item>Vila Mariana</item>
+        <item>Santa Cruz</item>
+        <item>Praça da Árvore</item>
+        <item>Saúde</item>
+        <item>São Judas</item>
+        <item>Conceição</item>
+        <item>Jabaquara</item>
+    </string-array>
+
+    <string-array name="estacoes_linhaverde">
+        <item>Vila Madalena</item>
+        <item>Sumaré</item>
+        <item>Clínicas</item>
+        <item>Consolação</item>
+        <item>Trianon - MASP</item>
+        <item>Brigadeiro</item>
+        <item>Paraíso</item>
+        <item>Ana Rosa</item>
+        <item>Chácara Klabin</item>
+        <item>Santos - Imigrantes</item>
+        <item>Alto do Ipiranga</item>
+        <item>Sacomã</item>
+        <item>Tamanduateí</item>
+        <item>Vila Prudente</item>
+    </string-array>
+
+    <string-array name="estacoes_linhavermelha">
+        <item>Palmeiras - Barra Funda</item>
+        <item>Marechal Deodoro</item>
+        <item>Santa Cecília</item>
+        <item>República</item>
+        <item>Anhangabaú</item>
+        <item>Sé</item>
+        <item>Pedro II</item>
+        <item>Brás</item>
+        <item>Bresser - Mooca</item>
+        <item>Belém</item>
+        <item>Tatuapé</item>
+        <item>Carrão</item>
+        <item>Penha</item>
+        <item>Vila Matilde</item>
+        <item>Guilhermina - Esperança</item>
+        <item>Patriarca</item>
+        <item>Artur Alvim</item>
+        <item>Corinthians - Itaquera</item>
+    </string-array>
+
+    <string-array name="estacoes_linhaamarela">
+        <item>Luz</item>
+        <item>República</item>
+        <item>Higienópolis - Mackenzie</item>
+        <item>Paulista</item>
+        <item>Oscar Freire</item>
+        <item>Fradique Coutinho</item>
+        <item>Faria Lima</item>
+        <item>Pinheiros</item>
+        <item>Butantã</item>
+        <item>São Paulo - Morumbi</item>
+    </string-array>
+
+    <string name="campos_vazios">Preencha todos os campos!</string>
+    <string name="senhas_diferentes">As senhas estão diferentes!</string>
+
+    <string name="furto">"  "Furto</string>
+    <string name="assedio">"  "Assédio</string>
+    <string name="paralisacao">"  "Paralisação</string>
+    <string name="catraca_quebrada">"  "Catraca quebrada</string>
+    <string name="escada_quebrada">"  "Escada quebrada</string>
+    <string name="lotacao">"  "Lotação</string>
+    <string name="comercio_ambulante">"  "Comércio Ambulante</string>
+    <string name="velocidade_reduzida">"  "Velocidade Reduzida</string>
+    <string name="outro">"  "Outro: </string>
+    <string name="qual">" qual? </string>
+
+</resources>

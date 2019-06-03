@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4cded8</color>
+    <color name="colorPrimaryDark">#00cec6</color>
+    <color name="colorAccent">#0D0C0C</color>
+    <color name="colorAlert">#f3a94e</color>
+    <color name="colorAzul">#006aff</color>
+    <color name="colorBarra">#006aff</color>
+    <color name="pl1">#fc354c</color>
+    <color name="pl2">#29221F</color>
+    <color name="pl3">#13747D</color>
+    <color name="pl4">#0abfbc</color>
+    <color name="pl5">#fcf7c5</color>
+    <color name="azul_questao">#50A19E</color>
+    <color name="linha_azul">#1560d8</color>
+    <color name="linha_verde">#198c05</color>
+    <color name="linha_vermelha">#d12121</color>
+    <color name="linha_amarela">#d8ca2d</color>
+
+</resources>

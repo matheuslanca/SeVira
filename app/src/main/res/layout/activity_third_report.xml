@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.subwayinovators.sevira.ThirdReport">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/txtLinha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
+                android:text="@string/questao1"
+                android:textColor="#fff"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="160dp"
+            android:background="#fff">
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="120dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rbfurto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/furto"
+                    android:textSize="30sp" />
+
+                <RadioButton
+                    android:id="@+id/rbassedio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/assedio"
+                    android:textSize="30sp" />
+
+                <RadioButton
+                    android:id="@+id/rbparalisacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/paralisacao"
+                    android:textSize="30sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rbcatraca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/catraca_quebrada"
+                    android:textSize="30sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rbescada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/escada_quebrada"
+                    android:textSize="30sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rblotacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/lotacao"
+                    android:textSize="30sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rbcomercio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/comercio_ambulante"
+                    android:textSize="30sp" />
+
+                <RadioButton
+                    android:id="@+id/rbvelocidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/velocidade_reduzida"
+                    android:textSize="30sp" />
+
+                <RadioButton
+                    android:id="@+id/rboutro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="onButtonClicked"
+                    android:text="@string/outro"
+                    android:textSize="30sp" />
+
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/edtOutro"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="380dp"
+                android:layout_marginEnd="40dp"
+                android:ems="10"
+                android:hint="@string/qual"
+                android:inputType="textMultiLine|text"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/azul_questao"
+            android:src="@mipmap/ic_arrow_back_black_24dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabNext"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            app:backgroundTint="@color/azul_questao"
+            app:elevation="0dp"
+            app:srcCompat="@mipmap/ic_arrow_next_black_24dp" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</android.support.constraint.ConstraintLayout>

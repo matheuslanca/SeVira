@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="subwayinovators.sevira">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@drawable/sevira"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/sevira"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.subwayinovators.sevira.SettingsActivity"></activity>
+        <activity android:name="com.subwayinovators.sevira.ProfileActivity" />
+        <activity android:name="com.subwayinovators.sevira.MainActivity" />
+        <activity android:name="com.subwayinovators.sevira.FirstReport" />
+        <activity android:name="com.subwayinovators.sevira.SecondReport" />
+        <activity android:name="com.subwayinovators.sevira.ThirdReport" />
+        <activity android:name="com.subwayinovators.sevira.CadastroActivity" />
+        <activity android:name="com.subwayinovators.sevira.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

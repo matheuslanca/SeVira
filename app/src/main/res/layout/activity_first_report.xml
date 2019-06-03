@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.subwayinovators.sevira.FirstReport" >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/txtLinha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
+                android:text="@string/questao1"
+                android:textColor="#fff"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteY="101dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="160dp"
+            android:background="#fff">
+
+            <Button
+                android:id="@+id/btnAzul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:backgroundTint="@color/linha_azul"
+                android:elevation="1dp"
+                android:text="@string/linha_azul"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnVerde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_alignStart="@+id/btnAzul"
+                android:layout_alignEnd="@+id/btnAzul"
+                android:layout_below="@+id/btnAzul"
+                android:layout_marginTop="23dp"
+                android:backgroundTint="@color/linha_verde"
+                android:text="@string/linha_verde"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnVermelho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_alignEnd="@+id/btnVerde"
+                android:layout_alignStart="@+id/btnVerde"
+                android:layout_below="@+id/btnVerde"
+                android:layout_marginTop="23dp"
+                android:backgroundTint="@color/linha_vermelha"
+                android:text="@string/linha_vermelha"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnAmarelo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_alignEnd="@+id/btnVermelho"
+                android:layout_alignStart="@+id/btnVermelho"
+                android:layout_below="@+id/btnVermelho"
+                android:layout_marginTop="23dp"
+                android:backgroundTint="@color/linha_amarela"
+                android:text="@string/linha_amarela"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/azul_questao"
+            android:src="@mipmap/ic_arrow_back_black_24dp" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</android.support.v4.widget.DrawerLayout>

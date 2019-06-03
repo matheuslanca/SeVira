@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.subwayinovators.sevira.MainActivity"
+    android:id="@+id/drawerLayout" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="90dp"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/layoutLinhaAzul"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/retangulo_branco_sombra"
+                android:elevation="10dp" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/imgLinhaAzul"
+                    android:layout_height="30dp"
+                    android:src="@drawable/linha_azul"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/txtLinhaAzul"
+                    android:text="@string/linha_azul"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="9dp"
+                    android:textSize="24sp"/>
+
+                <ImageView
+                    android:id="@+id/imgSituacaoLinhaAzul"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/txtLinhaAzul"
+                    android:src="@drawable/estado3" />
+
+                <RelativeLayout
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/retangulo_linhaazul"
+                    android:layout_marginStart="25dp"
+                    android:layout_below="@id/imgLinhaAzul"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:foregroundGravity="center_vertical|center"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="@string/estado3"
+                        android:textAllCaps="true"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="17h59"
+                    android:textColor="#9f9f9f" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/layoutLinhaVerde"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/layoutLinhaAzul"
+                android:background="@drawable/retangulo_branco_sombra"
+                android:elevation="10dp" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/imgLinhaVerde"
+                    android:layout_height="30dp"
+                    android:src="@drawable/linha_verde"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/txtLinhaVerde"
+                    android:text="@string/linha_verde"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="9dp"
+                    android:textSize="24sp"/>
+
+                <ImageView
+                    android:id="@+id/imgSituacaoLinhaVerde"
+                    android:layout_width="23dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/txtLinhaVerde"
+                    android:src="@null" />
+
+                <RelativeLayout
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/retangulo_linhaverde"
+                    android:layout_marginStart="25dp"
+                    android:layout_below="@id/imgLinhaVerde"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:foregroundGravity="center_vertical|center"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Operando Normalmente"
+                        android:textAllCaps="true"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="17h59"
+                    android:textColor="#9f9f9f" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:id="@+id/layoutLinhaVermelha"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/layoutLinhaVerde"
+                android:background="@drawable/retangulo_branco_sombra"
+                android:elevation="10dp" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/imgLinhaVermelha"
+                    android:layout_height="30dp"
+                    android:src="@drawable/linha_vermelha"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/txtLinhaVermelha"
+                    android:text="@string/linha_vermelha"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="9dp"
+                    android:textSize="24sp"/>
+
+                <ImageView
+                    android:id="@+id/imgSituacaoLinhaVermelha"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/txtLinhaVermelha"
+                    android:src="@drawable/estado2" />
+
+                <RelativeLayout
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/retangulo_linhavermelha"
+                    android:layout_marginStart="25dp"
+                    android:layout_below="@id/imgLinhaVermelha"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:foregroundGravity="center_vertical|center"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="@string/estado2"
+                        android:textAllCaps="true"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="17h59"
+                    android:textColor="#9f9f9f" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:id="@+id/layoutLinhaAmarela"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/layoutLinhaVermelha"
+                android:background="@drawable/retangulo_branco_sombra"
+                android:elevation="10dp" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/imgLinhaAmarela"
+                    android:layout_height="30dp"
+                    android:src="@drawable/linha_amarela"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/txtLinhaAmarela"
+                    android:text="@string/linha_amarela"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="9dp"
+                    android:textSize="24sp"/>
+
+                <ImageView
+                    android:id="@+id/imgSituacaoLinhaAmarela"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/txtLinhaAmarela"
+                    android:src="@null" />
+
+                <RelativeLayout
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/retangulo_linhaamarela"
+                    android:layout_marginStart="25dp"
+                    android:layout_below="@id/imgLinhaAmarela"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:foregroundGravity="center_vertical|center"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Operando Normalmente"
+                        android:textAllCaps="true"
+                        android:textColor="#fff"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="17h59"
+                    android:textColor="#9f9f9f" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/txtApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/app_name"
+                    android:textColor="#fff"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgSettings"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_profilepic"
+                    app:civ_border_width="1dp" />
+
+            </RelativeLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabReport"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="20dp"
+                android:cropToPadding="false"
+                android:padding="50dp"
+                android:src="@drawable/ic_triangulo"
+                app:backgroundTint="@color/azul_questao"
+                app:elevation="5dp" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

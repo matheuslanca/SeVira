@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.subwayinovators.sevira.CadastroActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/cadastrese"
+        android:textColor="@color/azul_questao"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/layoutRegister"
+        app:layout_constraintLeft_toLeftOf="@+id/layoutRegister"
+        app:layout_constraintRight_toRightOf="@+id/layoutRegister" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/retTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/email"
+            android:src="@drawable/retangulo_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/retTexto"
+            app:layout_constraintLeft_toLeftOf="@+id/retTexto"
+            app:layout_constraintRight_toRightOf="@+id/retTexto"
+            app:layout_constraintTop_toTopOf="@+id/retTexto" />
+
+        <ImageView
+            android:id="@+id/retTexto3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/senha"
+            android:src="@drawable/retangulo_text"
+            app:layout_constraintEnd_toEndOf="@id/retTexto"
+            app:layout_constraintTop_toBottomOf="@id/retTexto2" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/senha"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="@+id/retTexto3"
+            app:layout_constraintLeft_toLeftOf="@+id/retTexto3"
+            app:layout_constraintRight_toRightOf="@+id/retTexto3"
+            app:layout_constraintTop_toTopOf="@+id/retTexto3" />
+
+        <ImageView
+            android:id="@+id/retTexto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/username"
+            android:src="@drawable/retangulo_text"
+            app:layout_constraintEnd_toEndOf="@id/retTexto"
+            app:layout_constraintTop_toBottomOf="@id/retTexto" />
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/retTexto2"
+            app:layout_constraintLeft_toLeftOf="@+id/retTexto2"
+            app:layout_constraintRight_toRightOf="@+id/retTexto2"
+            app:layout_constraintTop_toTopOf="@+id/retTexto2" />
+
+        <ImageView
+            android:id="@+id/retTexto4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/confSenha"
+            android:src="@drawable/retangulo_text"
+            app:layout_constraintEnd_toEndOf="@id/retTexto"
+            app:layout_constraintTop_toBottomOf="@id/retTexto3" />
+
+        <EditText
+            android:id="@+id/edtConfPassword"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/confSenha"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="@+id/retTexto4"
+            app:layout_constraintLeft_toLeftOf="@+id/retTexto4"
+            app:layout_constraintRight_toRightOf="@+id/retTexto4"
+            app:layout_constraintTop_toTopOf="@+id/retTexto4" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/retangulo_continue"
+            app:layout_constraintLeft_toLeftOf="@+id/retTexto"
+            app:layout_constraintTop_toBottomOf="@+id/edtConfPassword" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -27,6 +27,7 @@ import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +40,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Objects;
 
 import com.facebook.FacebookSdk;
@@ -55,7 +57,7 @@ import subwayinovators.sevira.R;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnLogin, btnGoogle;
-    private LoginButton btnFacebook;
+    private Button btnFacebook;
     private TextView btnRegister;
     private TextView txtPular, txtEsqueci;
     private EditText edtEmail, edtSenha;
@@ -83,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         auth = FirebaseAuth.getInstance();
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnGoogle = (Button) findViewById(R.id.btnGoogle);
-        btnFacebook = (LoginButton) findViewById(R.id.btnFacebook);
+        btnFacebook = (Button) findViewById(R.id.btnFacebook);
         txtPular = (TextView) findViewById(R.id.txtPular);
         txtEsqueci = (TextView) findViewById(R.id.txtEsqueci);
         btnRegister = (TextView) findViewById(R.id.btnRegister);
@@ -91,6 +93,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtSenha = (EditText) findViewById(R.id.edtSenha);
         callbackManager = CallbackManager.Factory.create();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(final LoginResult loginResult) {
+                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            emailFB = object.getString("email");
+                            nameFB = object.getString("name");
+                            imagemFB = "https://graph.facebook.com/" + loginResult.getAccessToken().getUserId() + "/picture?type=large";
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "email,name");
+                graphRequest.setParameters(parameters);
+                graphRequest.executeAsync();
+
+                loginFacebook(loginResult.getAccessToken());
+
+            }
+
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
 
         if(auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -221,47 +261,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (v == btnFacebook) {
 
 
-            btnFacebook.setReadPermissions("email", "public_profile");
+            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
             Toast.makeText(LoginActivity.this, "cheguei no 0", Toast.LENGTH_SHORT).show();
-            btnFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                @Override
-                public void onSuccess(final LoginResult loginResult) {
-                    GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                        @Override
-                        public void onCompleted(JSONObject object, GraphResponse response) {
-
-
-                            try {
-                                emailFB = object.getString("email");
-                                nameFB = object.getString("name");
-                                imagemFB = "https://graph.facebook.com/" + loginResult.getAccessToken().getUserId() + "/picture?type=large";
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                    Bundle parameters = new Bundle();
-                    parameters.putString("fields", "email,name");
-                    graphRequest.setParameters(parameters);
-                    graphRequest.executeAsync();
-
-                    loginFacebook(loginResult.getAccessToken());
-
-                }
-
-
-                @Override
-                public void onCancel() {
-
-                }
-
-                @Override
-                public void onError(FacebookException error) {
-
-                }
-            });
-
         }
 
     }

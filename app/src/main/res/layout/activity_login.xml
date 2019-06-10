@@ -117,11 +117,11 @@
         android:layout_marginTop="10dp"
         android:layout_height="48dp">
 
-    <com.facebook.login.widget.LoginButton
+    <Button
         android:id="@+id/btnFacebook"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/com_facebook_button_background" />
+        android:background="@drawable/retangulo_facebook" />
 
     </RelativeLayout>
 

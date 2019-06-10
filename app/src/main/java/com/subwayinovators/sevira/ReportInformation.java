@@ -37,7 +37,6 @@ public class ReportInformation {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
     public String getReport() {
         return report;
     }

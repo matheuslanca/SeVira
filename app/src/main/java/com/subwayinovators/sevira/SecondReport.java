@@ -63,7 +63,6 @@ public class SecondReport extends AppCompatActivity {
                 Intent i = new Intent(SecondReport.this, ThirdReport.class);
                 i.putExtra("linha", linha + "");
                 i.putExtra("idestacao", position + "");
-                Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         }));

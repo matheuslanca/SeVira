@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:694732593897:android:eb3f62ac3e590af3",
+        "mobilesdk_app_id": "1:694732593897:android:26ab4932876d2cc8",
         "android_client_info": {
           "package_name": "com.subwayinovators.sevira"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "694732593897-3htnubk0u2u38pbfg8a6mujlu887mkev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.subwayinovators.sevira",
+            "certificate_hash": "dc271e203b941bd62217e04b2bddfa7b5ab9c8e0"
+          }
+        },
         {
           "client_id": "694732593897-oolsu3a8ucqur5ee8vhlaf71a50s9vko.apps.googleusercontent.com",
           "client_type": 3
@@ -25,46 +33,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:694732593897:android:c7ec25b47cc744c5",
-        "android_client_info": {
-          "package_name": "com.subwayinovators.sevira"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "694732593897-oolsu3a8ucqur5ee8vhlaf71a50s9vko.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC5PPjUrNJa9SASj_RACAhbT5fUVd8Tz3Q"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694732593897-oolsu3a8ucqur5ee8vhlaf71a50s9vko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -60,6 +60,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoAzul"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -68,7 +69,7 @@
                         android:layout_alignParentBottom="true"
                         android:foregroundGravity="center_vertical|center"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="@string/estado3"
+                        android:text="@string/estado1"
                         android:textAllCaps="true"
                         android:textColor="#fff"
                         android:textStyle="bold" />
@@ -76,6 +77,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioAzul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -132,6 +134,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoVerde"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -148,6 +151,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioVerde"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -204,6 +208,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoVermelha"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -212,7 +217,7 @@
                         android:layout_alignParentBottom="true"
                         android:foregroundGravity="center_vertical|center"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="@string/estado2"
+                        android:text="@string/estado1"
                         android:textAllCaps="true"
                         android:textColor="#fff"
                         android:textStyle="bold" />
@@ -220,6 +225,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioVermelha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -276,6 +282,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoAmarela"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -284,7 +291,7 @@
                         android:layout_alignParentBottom="true"
                         android:foregroundGravity="center_vertical|center"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="Operando Normalmente"
+                        android:text="@string/estado1"
                         android:textAllCaps="true"
                         android:textColor="#fff"
                         android:textStyle="bold" />
@@ -292,6 +299,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioAmarela"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -340,16 +348,15 @@
 
             </RelativeLayout>
 
-            <android.support.design.widget.FloatingActionButton
+            <ImageView
                 android:id="@+id/fabReport"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="20dp"
+                android:background="@drawable/botao_report"
                 android:cropToPadding="false"
                 android:padding="50dp"
-                android:src="@drawable/ic_triangulo"
-                app:backgroundTint="@color/azul_questao"
                 app:elevation="5dp" />
 
         </android.support.design.widget.CoordinatorLayout>

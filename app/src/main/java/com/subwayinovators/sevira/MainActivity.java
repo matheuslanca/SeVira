@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +23,7 @@ import subwayinovators.sevira.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FloatingActionButton fabReport;
+    private ImageView fabReport;
     private CircleImageView imgProfile;
     private FirebaseAuth auth;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         // FLOATING ACTION BUTTON
-        fabReport = (FloatingActionButton) findViewById(R.id.fabReport);
+        fabReport = (ImageView) findViewById(R.id.fabReport);
         imgProfile = (CircleImageView) findViewById(R.id.imgSettings);
 
         if(auth.getCurrentUser() != null){

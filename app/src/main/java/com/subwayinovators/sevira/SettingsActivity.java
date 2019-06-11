@@ -31,7 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
                     auth.signOut();
                 }
                 Toast.makeText(SettingsActivity.this, "Logout efetuado com sucesso", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
+                startActivity(new Intent(SettingsActivity.this, Launcher.class));
             }
         });
     }

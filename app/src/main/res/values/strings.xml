@@ -13,7 +13,7 @@
     <string name="senha">Senha</string>
     <string name="email">E-mail</string>
     <string name="confSenha">Confirmar Senha</string>
-    <string name="username">Nome de Usuário</string>
+    <string name="username">Nome</string>
     <string name="cadastrese">Cadastre-se</string>
     <string name="pular">Pular</string>
     <string name="login">Login</string>
@@ -112,5 +112,9 @@
     <string name="velocidade_reduzida">"  "Velocidade Reduzida</string>
     <string name="outro">"  "Outro: </string>
     <string name="qual">" qual? </string>
+
+    <string name="facebook_app_id">357620281774514</string>
+    <string name="fb_login_protocol_scheme">fb357620281774514</string>
+
 
 </resources>

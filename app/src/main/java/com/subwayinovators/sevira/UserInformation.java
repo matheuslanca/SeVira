@@ -2,11 +2,9 @@ package com.subwayinovators.sevira;
 
 public class UserInformation {
     public String email;
-    public String senha;
     public String username;
     public int linhaFavorita;
     public int pontuacao;
-    public int rank;
     public int level;
     public String profilepic;
 
@@ -14,13 +12,11 @@ public class UserInformation {
 
     }
 
-    public UserInformation(String email, String senha, String username, int linhaFavorita, int pontuacao, int rank, int level, String profilepic) {
+    public UserInformation(String email, String username, int linhaFavorita, int pontuacao, int level, String profilepic) {
         this.email = email;
-        this.senha = senha;
         this.username = username;
         this.linhaFavorita = linhaFavorita;
         this.pontuacao = pontuacao;
-        this.rank = rank;
         this.level = level;
         this.profilepic = profilepic;
     }
@@ -33,13 +29,6 @@ public class UserInformation {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
     public String getUsername() {
         return username;
@@ -63,14 +52,6 @@ public class UserInformation {
 
     public void setPontuacao(int pontuacao) {
         this.pontuacao = pontuacao;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
     }
 
     public int getLevel() {

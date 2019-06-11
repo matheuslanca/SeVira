@@ -281,7 +281,7 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
         ReportInformation reportInformation = new ReportInformation(reportID, hora, report, idlinha, idestacao, usuario, linha, estacao);
         if(hora != null && report != null){
             // Report sem login
-            if(!userID.equals("")){
+            if(userID.equals("")){
                 reportInformation.usuario = "Usuário não cadastrado";
             }
 

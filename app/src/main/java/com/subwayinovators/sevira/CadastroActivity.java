@@ -72,9 +72,9 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         finish();
     }
 
-    private void saveUserInformation(String email, String senha, String username) {
+    public void saveUserInformation(String email, String senha, String username) {
         int linhaFavorita = 0;
-        final UserInformation userInformation = new UserInformation(email, senha, username, linhaFavorita, 0, 1, 1, "");
+        final UserInformation userInformation = new UserInformation(email, username, linhaFavorita, 1, 1, "");
         progressDialog.setMessage("Efetuando login...");
         if(auth.getCurrentUser() != null){
             progressDialog.dismiss();

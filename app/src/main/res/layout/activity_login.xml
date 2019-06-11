@@ -33,7 +33,7 @@
         android:id="@+id/retTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:contentDescription="@string/email"
         android:src="@drawable/retangulo_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,14 +86,60 @@
         app:layout_constraintLeft_toLeftOf="@+id/retTexto"
         app:layout_constraintTop_toBottomOf="@+id/edtSenha" />
 
-    <Button
+    <TextView
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/retangulo_cadastrese"
+        android:text="@string/cadastrese"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@+id/retTexto"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+
+    <TextView
+        android:id="@+id/txtEsqueci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/esqueci_minha_senha"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFacebook" />
+
+
+
+    <RelativeLayout
+        android:layout_width="295dp"
+        android:id="@+id/layoutFacebook"
+        app:layout_constraintLeft_toLeftOf="@+id/retTexto"
+        app:layout_constraintTop_toBottomOf="@+id/layoutGoogle"
+        android:layout_marginTop="10dp"
+        android:layout_height="48dp">
+
+    <Button
+        android:id="@+id/btnFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/retangulo_facebook" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="295dp"
+        app:layout_constraintLeft_toLeftOf="@+id/retTexto"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+        android:layout_marginTop="20dp"
+        android:id="@+id/layoutGoogle"
+        android:layout_height="48dp">
+
+        <Button
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/retangulo_google" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/txtPular"
@@ -104,18 +150,9 @@
         android:focusable="true"
         android:text="@string/pular"
         android:textSize="20sp"
-        app:layout_constraintRight_toRightOf="@+id/btnRegister"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+        app:layout_constraintRight_toRightOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFacebook" />
 
-    <TextView
-        android:id="@+id/txtEsqueci"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/esqueci_minha_senha"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="@+id/btnRegister"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/pl2</item>
     </style>
 
+    <style name="FacebookLoginButton">
+        <item name="android:textSize">20dp</item>
+        <item name="android:background">@drawable/retangulo_facebook</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
 </resources>

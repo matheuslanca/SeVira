@@ -4,59 +4,174 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Objects;
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import subwayinovators.sevira.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public Button btnLogin;
-    public Button btnRegister;
-    public TextView txtPular, txtEsqueci;
-    public EditText edtEmail, edtSenha;
+    private Button btnLogin, btnGoogle;
+    private Button btnFacebook;
+    private TextView btnRegister;
+    private TextView txtPular, txtEsqueci;
+    private EditText edtEmail, edtSenha;
     private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
+    private CallbackManager callbackManager;
+
+    private String emailFB, imagemFB, nameFB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//        AppEventsLogger.activateApp(this);
         progressDialog = new ProgressDialog(this);
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+
 
         auth = FirebaseAuth.getInstance();
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnGoogle = (Button) findViewById(R.id.btnGoogle);
+        btnFacebook = (Button) findViewById(R.id.btnFacebook);
         txtPular = (TextView) findViewById(R.id.txtPular);
         txtEsqueci = (TextView) findViewById(R.id.txtEsqueci);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister = (TextView) findViewById(R.id.btnRegister);
         edtEmail = (EditText) findViewById(R.id.edtUsername);
         edtSenha = (EditText) findViewById(R.id.edtSenha);
+        callbackManager = CallbackManager.Factory.create();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(final LoginResult loginResult) {
+                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            emailFB = object.getString("email");
+                            nameFB = object.getString("name");
+                            imagemFB = "https://graph.facebook.com/" + loginResult.getAccessToken().getUserId() + "/picture?type=large";
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "email,name");
+                graphRequest.setParameters(parameters);
+                graphRequest.executeAsync();
+
+                loginFacebook(loginResult.getAccessToken());
+
+            }
+
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
 
         if(auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
 
         btnLogin.setOnClickListener(this);
+        btnGoogle.setOnClickListener(this);
+        btnFacebook.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         txtPular.setOnClickListener(this);
         txtEsqueci.setOnClickListener(this);
+
+
+    }
+
+    private void loginFacebook (final AccessToken accessToken) {
+        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+
+                    int linhaFavorita = 0;
+                    final UserInformation userInformation = new UserInformation(emailFB, nameFB, linhaFavorita, 0,  1, imagemFB);
+
+                    if(auth.getCurrentUser() != null){
+//                        progressDialog.dismiss();
+                        // armazenar informações no Firebase
+
+                        databaseReference.child("Usuarios").child(auth.getUid()).setValue(userInformation);
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocorreu algum erro", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
     }
 
@@ -99,30 +214,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if(v == btnLogin) {
+        if (v == btnLogin) {
             login();
         }
-        if(v == btnRegister){
+
+        if (v == btnRegister) {
             startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
+            finish();
         }
 
-        if(v == txtPular) {
+        if (v == txtPular) {
             Intent pular = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(pular);
+            finish();
         }
 
-        if(v == txtEsqueci){
+        if (v == txtEsqueci) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("  Insira seu e-mail");
 
             final EditText input = new EditText(this);
-            input.setPadding(30, 0, 30, 0);
+            input.setPadding(100, 0, 50, 0);
             input.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
 
 
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 String enderecoEmail;
+
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     enderecoEmail = input.getText().toString();
@@ -138,6 +257,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             builder.show();
         }
+
+        if (v == btnFacebook) {
+
+
+            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
+            Toast.makeText(LoginActivity.this, "cheguei no 0", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void esqueciMinhaSenha(String email) {

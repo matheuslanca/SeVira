@@ -26,6 +26,7 @@
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
+                android:background="@null"
                 app:srcCompat="@mipmap/ic_arrow_back_black_24dp" />
 
             <TextView
@@ -78,7 +79,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:src="@drawable/ic_profilepic"
-                    app:civ_border_width="1dp"
+                    app:civ_border_width="0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -207,7 +208,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txtTituloPb">
 
                 <ImageView
-                    android:id="@+id/imgLinhaAzul"
+                    android:id="@+id/imgLinhaFav"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="15dp"
@@ -215,7 +216,7 @@
                     android:src="@drawable/linha_azul" />
 
                 <TextView
-                    android:id="@+id/txtLinhaAzul"
+                    android:id="@+id/txtLinhaFav"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginStart="50dp"
@@ -224,23 +225,24 @@
                     android:textSize="24sp" />
 
                 <ImageView
-                    android:id="@+id/imgSituacaoLinhaAzul"
+                    android:id="@+id/imgSituacaoLinhaFav"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="2dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/txtLinhaAzul"
+                    android:layout_toRightOf="@id/txtLinhaFav"
                     android:src="@drawable/estado3" />
 
                 <RelativeLayout
                     android:layout_width="200dp"
                     android:layout_height="30dp"
-                    android:layout_below="@id/imgLinhaAzul"
+                    android:layout_below="@id/imgLinhaFav"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/retangulo_linhaazul">
 
                     <TextView
+                        android:id="@+id/txtSituacaoLinhaFav"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -257,6 +259,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHoraLinhaFav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

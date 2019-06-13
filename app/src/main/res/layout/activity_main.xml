@@ -27,7 +27,7 @@
 
                 <ImageView
                     android:layout_width="30dp"
-                    android:id="@+id/imgLinhaAzul"
+                    android:id="@+id/imgLinhaFav"
                     android:layout_height="30dp"
                     android:src="@drawable/linha_azul"
                     android:layout_marginStart="15dp"
@@ -36,19 +36,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:id="@+id/txtLinhaAzul"
+                    android:id="@+id/txtLinhaFav"
                     android:text="@string/linha_azul"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="9dp"
                     android:textSize="24sp"/>
 
                 <ImageView
-                    android:id="@+id/imgSituacaoLinhaAzul"
+                    android:id="@+id/imgSituacaoLinhaFav"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="2dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/txtLinhaAzul"
+                    android:layout_toRightOf="@id/txtLinhaFav"
                     android:src="@drawable/estado3" />
 
                 <RelativeLayout
@@ -56,7 +56,7 @@
                     android:layout_height="30dp"
                     android:background="@drawable/retangulo_linhaazul"
                     android:layout_marginStart="25dp"
-                    android:layout_below="@id/imgLinhaAzul"
+                    android:layout_below="@id/imgLinhaFav"
                     android:layout_marginTop="10dp">
 
                     <TextView

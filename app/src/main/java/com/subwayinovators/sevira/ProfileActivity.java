@@ -36,9 +36,11 @@ public class ProfileActivity extends AppCompatActivity {
     // Criando elementos do XML
     private ImageButton btnBack;
     private CircleImageView btnSettings;
-    private ImageView imgProfilePic;
+    private ImageView imgProfilePic, imgLinhaFav, imgSituacaoLinhaFav;
     private ProgressBar pbPontuacao;
-    private TextView txtLevelPb, txtLevel, txtProgress, txtScore, txtUsername;
+    private TextView txtLevelPb, txtLevel, txtProgress, txtScore, txtUsername, txtLinhaFav, txtSituacaoLinhaFav, txtHoraLinhaFav;
+
+
 
     // Criando elementos do BD
     private FirebaseAuth auth;
@@ -67,6 +69,14 @@ public class ProfileActivity extends AppCompatActivity {
         txtProgress = findViewById(R.id.txtProgress);
         txtScore = findViewById(R.id.txtScore);
         txtUsername = findViewById(R.id.txtUsername);
+
+        // Elementos de linha favorita
+        imgLinhaFav = findViewById(R.id.imgLinhaFav);
+        imgSituacaoLinhaFav = findViewById(R.id.imgSituacaoLinhaFav);
+        txtLinhaFav = findViewById(R.id.txtLinhaFav);
+        txtSituacaoLinhaFav = findViewById(R.id.txtSituacaoLinhaFav);
+        txtHoraLinhaFav = findViewById(R.id.txtHoraLinhaFav);
+        layoutLinha
 
         // Inicializando elementos do BD
         auth = FirebaseAuth.getInstance();
@@ -101,6 +111,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                 pbPontuacao.setMax(levelSize);
                 pbPontuacao.setProgress(myProgress);
+
+                int linhaFav = userInformation.getLinhaFavorita();
+                setLinhaFavorita(linhaFav);
 
 
                 if(!userInformation.getProfilepic().equals("")) {
@@ -139,4 +152,50 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    public void setLinhaFavorita(int linha){
+        switch(linha){
+            case 1:
+                imgLinhaFav.setImageDrawable(getDrawable(R.drawable.linha_azul));
+//                imgSituacaoLinhaFav
+                txtLinhaFav.setText(R.string.linha_azul);
+//                txtSituacaoLinhaFav
+//                txtHoraLinhaFav
+                break;
+
+            case 2:
+                imgLinhaFav.setImageDrawable(getDrawable(R.drawable.linha_verde));
+//                imgSituacaoLinhaFav
+                txtLinhaFav.setText(R.string.linha_verde);
+//                txtSituacaoLinhaFav
+//                txtHoraLinhaFav
+                break;
+
+            case 3:
+                imgLinhaFav.setImageDrawable(getDrawable(R.drawable.linha_vermelha));
+//                imgSituacaoLinhaFav
+                txtLinhaFav.setText(R.string.linha_vermelha);
+//                txtSituacaoLinhaFav
+//                txtHoraLinhaFav
+                break;
+
+            case 4:
+                imgLinhaFav.setImageDrawable(getDrawable(R.drawable.linha_amarela));
+//                imgSituacaoLinhaFav
+                txtLinhaFav.setText(R.string.linha_azul);
+//                txtSituacaoLinhaFav
+//                txtHoraLinhaFav
+                break;
+
+            default:
+                imgLinhaFav.setImageDrawable(null);
+                imgSituacaoLinhaFav.setImageDrawable(null);
+                txtLinhaFav.setText("");
+                txtSituacaoLinhaFav.setText("");
+                txtHoraLinhaFav.setText("");
+
+
+
+
+        }
+    }
 }

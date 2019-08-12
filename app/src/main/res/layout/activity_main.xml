@@ -60,6 +60,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoLinhaAzul"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -76,6 +77,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioAzul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -132,6 +134,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoLinhaVerde"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -148,6 +151,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioVerde"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -204,6 +208,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoLinhaVermelha"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -220,6 +225,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioVermelha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -276,6 +282,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtSituacaoLinhaAmarela"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -292,6 +299,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txtHorarioAmarela"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

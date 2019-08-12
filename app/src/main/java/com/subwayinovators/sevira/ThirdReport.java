@@ -60,7 +60,7 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
 
     // Elementos do banco de dados
     // Referências
-    DatabaseReference databaseReference, userRef;
+    DatabaseReference databaseReference;
     ValueEventListener valueEventListener;
 
     // User
@@ -278,7 +278,7 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
 
     public void createReport(String reportID, String hora, String report, int idlinha, int idestacao, String usuario, String userID, String linha, String estacao){
 
-        ReportInformation reportInformation = new ReportInformation(reportID, hora, report, idlinha, idestacao, usuario, linha, estacao);
+        final ReportInformation reportInformation = new ReportInformation(reportID, hora, report, idlinha, idestacao, usuario, linha, estacao);
         if(hora != null && report != null){
             // Report sem login
             if(userID.equals("")){
@@ -297,6 +297,9 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
                                     Toast.makeText(ThirdReport.this, "Você ganhou 60 pontos!\nSua pontuação: " + pontuacaoFinal, Toast.LENGTH_SHORT).show();
                                 }
                                 databaseReference.removeEventListener(valueEventListener);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("situacao").setValue(reportInformation.report);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("estacaoReport").setValue(reportInformation.estacao);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("horario").setValue(reportInformation.hora);
                                 startActivity(new Intent(ThirdReport.this, MainActivity.class));
                             } else {
                                 databaseReference.removeEventListener(valueEventListener);
@@ -305,6 +308,8 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
                             progressDialog.dismiss();
                         }
                     });
+
+
         }
 
     }

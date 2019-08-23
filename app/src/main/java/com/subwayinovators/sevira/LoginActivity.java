@@ -262,7 +262,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
             LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
-            Toast.makeText(LoginActivity.this, "cheguei no 0", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.subwayinovators.sevira.SecondReport">
 
-    <!--<Spinner-->
-    <!--android:id="@+id/spinner"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_marginTop="130dp"-->
-    <!--android:prompt="@string/estacao"-->
-    <!--android:spinnerMode="dialog"/>-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

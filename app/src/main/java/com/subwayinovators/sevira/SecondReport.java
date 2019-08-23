@@ -17,7 +17,7 @@ import subwayinovators.sevira.R;
 
 public class SecondReport extends AppCompatActivity {
 
-    FloatingActionButton fabBack, fabNext;
+    FloatingActionButton fabBack;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     List<String> list;

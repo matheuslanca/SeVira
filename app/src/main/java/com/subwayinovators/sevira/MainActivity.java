@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<Linha> linhas;
 
     private TextView txtHorarioAzul, txtHorarioVerde, txtHorarioVermelha, txtHorarioAmarela;
-    private TextView txtSituacaoLinhaAzul, txtSituacaoLinhaVerde, txtSituacaoLinhaVermelha, txtSituacaoLinhaAmarela;
+    private TextView txtSituacaoLinhaAzul, txtSituacaoLinhaVerde, txtSituacaoLinhaVermelha, txtSituacaoLinhaAmarela, txtAzul, txtVerde, txtVermelha, txtAmarela;
     private ImageView imgSituacaoLinhaAzul, imgSituacaoLinhaVerde, imgSituacaoLinhaVermelha, imgSituacaoLinhaAmarela;
+    private RelativeLayout layoutLinhaAzul, layoutLinhaVerde, layoutLinhaVermelha, layoutLinhaAmarela;
+    private ImageView imgAzul, imgVerde, imgVermelha, imgAmarela;
 
 
     @Override
@@ -62,6 +65,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgSituacaoLinhaVerde = findViewById(R.id.imgSituacaoLinhaVerde);
         imgSituacaoLinhaVermelha = findViewById(R.id.imgSituacaoLinhaVermelha);
         imgSituacaoLinhaAmarela = findViewById(R.id.imgSituacaoLinhaAmarela);
+        layoutLinhaAzul = findViewById(R.id.layoutLinhaAzul);
+        layoutLinhaVerde = findViewById(R.id.layoutLinhaVerde);
+        layoutLinhaVermelha = findViewById(R.id.layoutLinhaVermelha);
+        layoutLinhaAmarela = findViewById(R.id.layoutLinhaAmarela);
+        imgAzul = findViewById(R.id.imgLinhaAzul);
+        imgVerde = findViewById(R.id.imgLinhaVerde);
+        imgVermelha = findViewById(R.id.imgLinhaVermelha);
+        imgAmarela = findViewById(R.id.imgLinhaAmarela);
+        txtAzul = findViewById(R.id.txtLinhaAzul);
+        txtVerde = findViewById(R.id.txtLinhaVerde);
+        txtVermelha = findViewById(R.id.txtLinhaVermelha);
+        txtAmarela = findViewById(R.id.txtLinhaAmarela);
+
+        layoutLinhaAzul.setOnClickListener(this);
+        layoutLinhaVerde.setOnClickListener(this);
+        layoutLinhaVermelha.setOnClickListener(this);
+        layoutLinhaAmarela.setOnClickListener(this);
 
 
         // FLOATING ACTION BUTTON
@@ -105,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     l.setCor(dataSnapshot.child("Linhas").child(index).getValue(Linha.class).getCor());
                     l.setEstacaoReport(dataSnapshot.child("Linhas").child(index).getValue(Linha.class).getEstacaoReport());
                     l.setHorario(dataSnapshot.child("Linhas").child(index).getValue(Linha.class).getHorario());
+                    l.setHorario(l.horario.replace(" ", "\n"));
                     l.setSituacao(dataSnapshot.child("Linhas").child(index).getValue(Linha.class).getSituacao());
                     linhas.add(l);
 
@@ -187,6 +208,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         }
+
+        Intent i = new Intent(MainActivity.this, ReportsActivity.class);
+        if (v == layoutLinhaVermelha || v == imgSituacaoLinhaVermelha || v == txtHorarioVermelha || v == txtSituacaoLinhaVermelha || v == imgVermelha || v == txtVermelha) {
+            i.putExtra("linha1", "Vermelha");
+            startActivity(i);
+        } else if(v == layoutLinhaAmarela || v == imgSituacaoLinhaAmarela || v == txtHorarioAmarela || v == txtSituacaoLinhaAmarela|| v == imgAmarela || v == txtAmarela) {
+            i.putExtra("linha1", "Amarela");
+            startActivity(i);
+        } else if(v == layoutLinhaVerde || v== imgSituacaoLinhaVerde || v == txtHorarioVerde || v == txtSituacaoLinhaVerde || v == imgVerde || v == txtVerde){
+            i.putExtra("linha1", "Verde");
+            startActivity(i);
+        } else if(v == layoutLinhaAzul || v == imgSituacaoLinhaAzul || v == txtHorarioAzul || v == txtSituacaoLinhaAzul || v == imgAzul || v == txtAzul){
+            i.putExtra("linha1", "Azul");
+            startActivity(i);
+        }
+
 
     }
 

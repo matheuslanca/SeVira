@@ -22,6 +22,9 @@ public class ReportInformation {
         this.estacao = estacao;
     }
 
+    public ReportInformation() {
+    }
+
     public String getId() {
         return id;
     }

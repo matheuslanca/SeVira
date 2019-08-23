@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="5dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="100dp"
+        android:id="@+id/layoutReport"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/retangulo_branco_sombra"
+        android:elevation="10dp" >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/imgLinha"
+            android:layout_height="30dp"
+            android:src="@drawable/linha_azul"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/txtEstacao"
+            android:text="@string/linha_azul"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="9dp"
+            android:textSize="24sp"/>
+
+        <RelativeLayout
+            android:id="@+id/layoutSituacao"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/imgLinha"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/retangulo_linhaazul">
+
+            <TextView
+                android:id="@+id/txtReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:foregroundGravity="center_vertical|center"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/estado3"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="17h59"
+            android:textColor="#9f9f9f" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

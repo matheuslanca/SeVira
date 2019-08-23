@@ -297,9 +297,10 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
                                     Toast.makeText(ThirdReport.this, "Você ganhou 60 pontos!\nSua pontuação: " + pontuacaoFinal, Toast.LENGTH_SHORT).show();
                                 }
                                 databaseReference.removeEventListener(valueEventListener);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("idreport").setValue(reportInformation.id);
                                 databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("situacao").setValue(reportInformation.report);
-                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("estacaoReport").setValue(reportInformation.estacao);
                                 databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("horario").setValue(reportInformation.hora);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("reports").child(reportInformation.id).setValue(reportInformation);
                                 startActivity(new Intent(ThirdReport.this, MainActivity.class));
                             } else {
                                 databaseReference.removeEventListener(valueEventListener);

@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
     private final int levelSize = 250;
 
     // Criando elementos do XML
-    private ImageButton btnBack;
+    private ImageView btnBack;
     private CircleImageView btnSettings;
     private ImageView imgProfilePic;
     private ProgressBar pbPontuacao;
@@ -116,7 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         };
         databaseReference.addListenerForSingleValueEvent(valueEventListener);
-
+        databaseReference.keepSynced(true);
 
         // Atribuindo listeners para os botões
         btnSettings.setOnClickListener(new View.OnClickListener() {

@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,10 +57,9 @@ import subwayinovators.sevira.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnLogin, btnGoogle;
-    private Button btnFacebook;
-    private TextView btnRegister;
-    private TextView txtPular, txtEsqueci;
+    private Button btnLogin;
+    private ImageView imgBack;
+    private TextView txtEsqueci;
     private EditText edtEmail, edtSenha;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
@@ -83,53 +83,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         auth = FirebaseAuth.getInstance();
+        imgBack = (ImageView) findViewById(R.id.imgBack);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnGoogle = (Button) findViewById(R.id.btnGoogle);
-        btnFacebook = (Button) findViewById(R.id.btnFacebook);
-        txtPular = (TextView) findViewById(R.id.txtPular);
         txtEsqueci = (TextView) findViewById(R.id.txtEsqueci);
-        btnRegister = (TextView) findViewById(R.id.btnRegister);
         edtEmail = (EditText) findViewById(R.id.edtUsername);
         edtSenha = (EditText) findViewById(R.id.edtSenha);
         callbackManager = CallbackManager.Factory.create();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(final LoginResult loginResult) {
-                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        try {
-                            emailFB = object.getString("email");
-                            nameFB = object.getString("name");
-                            imagemFB = "https://graph.facebook.com/" + loginResult.getAccessToken().getUserId() + "/picture?type=large";
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "email,name");
-                graphRequest.setParameters(parameters);
-                graphRequest.executeAsync();
-
-                loginFacebook(loginResult.getAccessToken());
-
-            }
-
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
 
 
         if(auth.getCurrentUser() != null) {
@@ -137,43 +98,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         btnLogin.setOnClickListener(this);
-        btnGoogle.setOnClickListener(this);
-        btnFacebook.setOnClickListener(this);
-        btnRegister.setOnClickListener(this);
-        txtPular.setOnClickListener(this);
         txtEsqueci.setOnClickListener(this);
+        imgBack.setOnClickListener(this);
 
 
     }
 
-    private void loginFacebook (final AccessToken accessToken) {
-        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
 
-                    int linhaFavorita = 0;
-                    final UserInformation userInformation = new UserInformation(emailFB, nameFB, linhaFavorita, 0,  1, imagemFB);
-
-                    if(auth.getCurrentUser() != null){
-//                        progressDialog.dismiss();
-                        // armazenar informações no Firebase
-
-                        databaseReference.child("Usuarios").child(auth.getUid()).setValue(userInformation);
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-
-                    }
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Ocorreu algum erro", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-    }
 
     private void login() {
         String email = edtEmail.getText().toString().trim();
@@ -216,17 +147,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v == btnLogin) {
             login();
+            return;
         }
 
-        if (v == btnRegister) {
-            startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
-            finish();
-        }
-
-        if (v == txtPular) {
-            Intent pular = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(pular);
-            finish();
+        if(v == imgBack){
+            startActivity(new Intent(LoginActivity.this, LauncherActivity.class));
         }
 
         if (v == txtEsqueci) {
@@ -256,13 +181,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             });
 
             builder.show();
-        }
-
-        if (v == btnFacebook) {
-
-
-            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
-            Toast.makeText(LoginActivity.this, "cheguei no 0", Toast.LENGTH_SHORT).show();
+            return;
         }
 
     }

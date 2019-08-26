@@ -6,35 +6,66 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import subwayinovators.sevira.R;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.android.gms.auth.api.Auth;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 
 public class CadastroActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnRegister;
     private EditText edtEmail;
+    private ImageView imgBack, btnFacebook;
     private EditText edtUsername;
+    private SignInButton btnGoogle;
     private EditText edtPassword, edtConfPassword;
     private ProgressDialog progressDialog;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
+    private String emailFB, nameFB, imagemFB;
+    private CallbackManager callbackManager;
+    private LoginManager loginManager;
+    private static int RC_SIGN_IN = 100;
 
 
     @Override
@@ -42,15 +73,101 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+
+        if (!FacebookSdk.isInitialized()) {
+            FacebookSdk.sdkInitialize(getApplicationContext());
+            AppEventsLogger.activateApp(getApplication());
+        }
+
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         edtConfPassword = (EditText) findViewById(R.id.edtConfPassword);
         edtUsername = (EditText) findViewById(R.id.edtUsername);
+        btnFacebook = (ImageView) findViewById(R.id.btnFacebook);
+        btnGoogle = (SignInButton) findViewById(R.id.btnGoogle);
         btnRegister = (Button) findViewById(R.id.btnLogin);
         btnRegister.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
         auth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        imgBack = (ImageView) findViewById(R.id.imgBack);
+
+        callbackManager = CallbackManager.Factory.create();
+        loginManager = LoginManager.getInstance();
+
+
+
+        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(final LoginResult loginResult) {
+
+                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            emailFB = object.getString("email");
+                            nameFB = object.getString("name");
+                            imagemFB = "https://graph.facebook.com/" + loginResult.getAccessToken().getUserId() + "/picture?type=large";
+//                            imagemFB = object.getJSONObject("picture").getJSONObject("data").getString("url");;
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "email,name");
+                graphRequest.setParameters(parameters);
+                graphRequest.executeAsync();
+                loginFacebook(loginResult.getAccessToken());
+
+            }
+
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+        imgBack.setOnClickListener(this);
+        btnFacebook.setOnClickListener(this);
+        btnGoogle.setOnClickListener(this);
+    }
+
+    private void loginFacebook (final AccessToken accessToken) {
+        Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_SHORT).show();
+        AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+
+                    int linhaFavorita = 0;
+                    final UserInformation userInformation = new UserInformation(emailFB, nameFB, linhaFavorita, 0,  1, imagemFB);
+
+                    if(auth.getCurrentUser() != null){
+//                        progressDialog.dismiss();
+                        // armazenar informações no Firebase
+
+                        databaseReference.child("Usuarios").child(auth.getUid()).setValue(userInformation);
+                        startActivity(new Intent(CadastroActivity.this, MainActivity.class));
+                        finish();
+
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocorreu algum erro", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 
     private void addUser(UserInformation userInformation){
@@ -74,7 +191,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
     public void saveUserInformation(String email, String senha, String username) {
         int linhaFavorita = 0;
-        final UserInformation userInformation = new UserInformation(email, username, linhaFavorita, 1, 1, "");
+        final UserInformation userInformation = new UserInformation(email, username, linhaFavorita, 0, 1, "");
         progressDialog.setMessage("Efetuando login...");
         if(auth.getCurrentUser() != null){
             progressDialog.dismiss();
@@ -144,6 +261,60 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             registerUser();
         }
 
+        if(v == imgBack){
+            startActivity(new Intent(CadastroActivity.this, LauncherActivity.class));
+        }
+
+        if (v == btnFacebook) {
+            loginManager.logInWithReadPermissions(CadastroActivity.this, Arrays.asList("email", "public_profile"));
+            return;
+        }
+
+        if(v == btnGoogle){
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+
+            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
+            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, RC_SIGN_IN);
+        }
+
+    }
+
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            Toast.makeText(this, "sucesso", Toast.LENGTH_SHORT).show();
+
+
+
+        } catch (ApiException e) {
+
+            Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

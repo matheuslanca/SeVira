@@ -16,5 +16,5 @@
     <color name="linha_verde">#198c05</color>
     <color name="linha_vermelha">#d12121</color>
     <color name="linha_amarela">#d8ca2d</color>
-
+    <color name="fundo">#009C9A</color>
 </resources>

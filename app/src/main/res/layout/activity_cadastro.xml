@@ -6,23 +6,34 @@
     android:layout_height="match_parent"
     tools:context="com.subwayinovators.sevira.CadastroActivity">
 
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView"
+        app:srcCompat="@mipmap/ic_arrow_back_black_24dp" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/cadastrese"
         android:textColor="@color/azul_questao"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/layoutRegister"
-        app:layout_constraintLeft_toLeftOf="@+id/layoutRegister"
-        app:layout_constraintRight_toRightOf="@+id/layoutRegister" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layoutRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@id/layoutAuth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -123,11 +134,40 @@
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/retangulo_continue"
             app:layout_constraintLeft_toLeftOf="@+id/retTexto"
             app:layout_constraintTop_toBottomOf="@+id/edtConfPassword" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutAuth"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/background_login"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/btnFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/retangulo_facebook"
+            app:layout_constraintTop_toBottomOf="@+id/btnGoogle" />
+
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogle"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnFacebook"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/retangulo_google" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

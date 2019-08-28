@@ -22,6 +22,8 @@ public class RecyclerAdapterReports extends RecyclerView.Adapter<RecyclerAdapter
     private ArrayList<String> report;
     private ArrayList<String> horario;
     private ArrayList<String> estacao;
+    private ArrayList<Integer> cores;
+    private ArrayList<Integer> linha;
     private int nlinha;
     private int color;
 
@@ -34,6 +36,13 @@ public class RecyclerAdapterReports extends RecyclerView.Adapter<RecyclerAdapter
         this.color = color;
     }
 
+    public RecyclerAdapterReports(ArrayList<String> report, ArrayList<String> horario, ArrayList<String> estacao, ArrayList<Integer> cores, ArrayList<Integer> linha) {
+        this.report = report;
+        this.horario = horario;
+        this.estacao = estacao;
+        this.cores = cores;
+        this.linha = linha;
+    }
 
     @NonNull
     @Override
@@ -46,6 +55,10 @@ public class RecyclerAdapterReports extends RecyclerView.Adapter<RecyclerAdapter
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterReports.ViewHolderLinha holder, int position) {
+        if(cores != null) {
+            nlinha = linha.get(position);
+            color = cores.get(position);
+        }
         if(nlinha == 1){
             holder.imgLinha.setImageResource(R.drawable.linha_azul);
         } else if(nlinha == 2){

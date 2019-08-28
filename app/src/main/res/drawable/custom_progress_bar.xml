@@ -3,6 +3,7 @@
 
     <item android:id="@android:id/background">
         <shape>
+            <corners android:radius="12dp" />
             <gradient
                 android:startColor="#9f9f9f"
                 android:centerColor="#9f9f9f"
@@ -16,6 +17,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
+                <corners android:radius="12dp" />
                 <gradient
                     android:startColor="@color/azul_questao"
                     android:centerColor="@color/azul_questao"

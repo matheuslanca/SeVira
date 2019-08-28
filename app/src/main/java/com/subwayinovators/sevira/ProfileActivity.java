@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,6 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import subwayinovators.sevira.R;
@@ -34,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     private final int levelSize = 250;
 
     // Criando elementos do XML
-    private ImageButton btnBack;
+    private ImageView btnBack;
     private CircleImageView btnSettings;
     private ImageView imgProfilePic;
     private ProgressBar pbPontuacao;
@@ -48,6 +51,17 @@ public class ProfileActivity extends AppCompatActivity {
 
     // Objeto do usuário para melhor organização
     private UserInformation userInformation;
+
+    ValueEventListener valueEventListener1;
+    DatabaseReference databaseReference1;
+    ArrayList<String> report;
+    ArrayList<String> horario;
+    ArrayList<Integer> cor;
+    ArrayList<Integer> linhas;
+    ArrayList<String> estacao;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerAdapterReports adapter;
 
 
     @Override
@@ -67,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtProgress = findViewById(R.id.txtProgress);
         txtScore = findViewById(R.id.txtScore);
         txtUsername = findViewById(R.id.txtUsername);
+        recyclerView = findViewById(R.id.recyclerView);
 
         // Inicializando elementos do BD
         auth = FirebaseAuth.getInstance();
@@ -117,6 +132,45 @@ public class ProfileActivity extends AppCompatActivity {
         };
         databaseReference.addListenerForSingleValueEvent(valueEventListener);
 
+        report = new ArrayList<String>();
+        horario = new ArrayList<String>();
+        estacao = new ArrayList<String>();
+        cor = new ArrayList<Integer>();
+        linhas = new ArrayList<Integer>();
+
+        databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Usuarios").child(user.getUid());
+        databaseReference.keepSynced(true);
+        valueEventListener1 = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapshot : dataSnapshot.child("Denuncias").getChildren()) {
+                    report.add(childSnapshot.getValue(ReportInformation.class).getReport());
+                    horario.add(childSnapshot.getValue(ReportInformation.class).getHora());
+                    estacao.add(childSnapshot.getValue(ReportInformation.class).getEstacao());
+                    String id = (childSnapshot.getValue(ReportInformation.class).getId());
+                    linhas.add(Character.getNumericValue(id.charAt(17)));
+                    cor.add(getIntLinha(Character.getNumericValue(id.charAt(17))));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        databaseReference1.addListenerForSingleValueEvent(valueEventListener1);
+
+        layoutManager = new LinearLayoutManager(this);
+        ((LinearLayoutManager) layoutManager).setReverseLayout(true);
+        ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new RecyclerAdapterReports(report, horario, estacao, cor, linhas);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+
+
 
         // Atribuindo listeners para os botões
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -133,9 +187,28 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    private int getIntLinha(int nlinha) {
+        switch(nlinha){
+            case 1:
+                int x = getResources().getColor(R.color.linha_azul);
+                return x;
 
+            case 2:
+                int y = getResources().getColor(R.color.linha_verde);
+                return y;
 
+            case 3:
+                int z = getResources().getColor(R.color.linha_vermelha);
+                return z;
+
+            case 4:
+                int a = getResources().getColor(R.color.linha_amarela);
+                return a;
+        }
+
+        return 0;
 
     }
 

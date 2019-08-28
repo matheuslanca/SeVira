@@ -147,12 +147,9 @@ public class ReportsActivity extends AppCompatActivity {
                 color = getResources().getColor(R.color.linha_amarela);
                 corLinha.setBackgroundColor(color);
                 return 4;
-
-            default:
-                color = getResources().getColor(R.color.linha_azul);
-                corLinha.setBackgroundColor(color);
-                return 1;
         }
+
+        return 0;
 
     }
 

@@ -21,6 +21,28 @@
     <string name="questao2">Em qual estação?</string>
     <string name="esqueci_minha_senha">Esqueci minha senha</string>
     <string name="perfil">Perfil</string>
+    <string name="reportinformado">Reportes informados</string>
+
+    <string name="campos_vazios">Preencha todos os campos!</string>
+
+    <string name="senhas_diferentes">As senhas estão diferentes!</string>
+
+    <string name="furto">"  "Furto</string>
+
+    <string name="assedio">"  "Assédio</string>
+
+    <string name="paralisacao">"  "Paralisação</string>
+    <string name="catraca_quebrada">"  "Catraca quebrada</string>
+
+    <string name="escada_quebrada">"  "Escada quebrada</string>
+    <string name="lotacao">"  "Lotação</string>
+    <string name="comercio_ambulante">"  "Comércio Ambulante</string>
+    <string name="velocidade_reduzida">"  "Velocidade Reduzida</string>
+    <string name="outro">"  "Outro: </string>
+    <string name="qual">" qual? </string>
+
+    <string name="facebook_app_id">357620281774514</string>
+    <string name="fb_login_protocol_scheme">fb357620281774514</string>
 
     <string-array name="estacoes_linhaazul">
         <item>Tucuruvi</item>
@@ -47,7 +69,6 @@
         <item>Conceição</item>
         <item>Jabaquara</item>
     </string-array>
-
     <string-array name="estacoes_linhaverde">
         <item>Vila Madalena</item>
         <item>Sumaré</item>
@@ -85,7 +106,6 @@
         <item>Artur Alvim</item>
         <item>Corinthians - Itaquera</item>
     </string-array>
-
     <string-array name="estacoes_linhaamarela">
         <item>Luz</item>
         <item>República</item>
@@ -98,23 +118,6 @@
         <item>Butantã</item>
         <item>São Paulo - Morumbi</item>
     </string-array>
-
-    <string name="campos_vazios">Preencha todos os campos!</string>
-    <string name="senhas_diferentes">As senhas estão diferentes!</string>
-
-    <string name="furto">"  "Furto</string>
-    <string name="assedio">"  "Assédio</string>
-    <string name="paralisacao">"  "Paralisação</string>
-    <string name="catraca_quebrada">"  "Catraca quebrada</string>
-    <string name="escada_quebrada">"  "Escada quebrada</string>
-    <string name="lotacao">"  "Lotação</string>
-    <string name="comercio_ambulante">"  "Comércio Ambulante</string>
-    <string name="velocidade_reduzida">"  "Velocidade Reduzida</string>
-    <string name="outro">"  "Outro: </string>
-    <string name="qual">" qual? </string>
-
-    <string name="facebook_app_id">357620281774514</string>
-    <string name="fb_login_protocol_scheme">fb357620281774514</string>
 
 
 </resources>

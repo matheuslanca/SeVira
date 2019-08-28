@@ -111,11 +111,16 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
         valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                UserInformation userInf = new UserInformation();
-                userInf.setUsername(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getUsername());
-                userInf.setPontuacao(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getPontuacao());
-                username = userInf.getUsername();
-                pontUser = userInf.getPontuacao();
+                if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    UserInformation userInf = new UserInformation();
+                    userInf.setUsername(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getUsername());
+                    userInf.setPontuacao(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getPontuacao());
+                    username = userInf.getUsername();
+                    pontUser = userInf.getPontuacao();
+                } else {
+                    username = "Usuário não cadastrado";
+                    pontUser = 0;
+                }
             }
 
             @Override
@@ -297,9 +302,14 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
                                     Toast.makeText(ThirdReport.this, "Você ganhou 60 pontos!\nSua pontuação: " + pontuacaoFinal, Toast.LENGTH_SHORT).show();
                                 }
                                 databaseReference.removeEventListener(valueEventListener);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("idreport").setValue(reportInformation.id);
                                 databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("situacao").setValue(reportInformation.report);
                                 databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("estacaoReport").setValue(reportInformation.estacao);
                                 databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("horario").setValue(reportInformation.hora);
+                                databaseReference.child("Linhas").child(reportInformation.idlinha + "").child("reports").child(reportInformation.id).setValue(reportInformation);
+                                if(user != null){
+                                    databaseReference.child("Usuarios").child(user.getUid() + "").child("Denuncias").child(reportInformation.id).setValue(reportInformation);
+                                }
                                 startActivity(new Intent(ThirdReport.this, MainActivity.class));
                             } else {
                                 databaseReference.removeEventListener(valueEventListener);

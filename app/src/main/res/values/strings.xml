@@ -118,6 +118,17 @@
         <item>Butantã</item>
         <item>São Paulo - Morumbi</item>
     </string-array>
+    <string name="pref_perfil">Informações de Usuário</string>
+    <string name="pref_app">Informações do aplicativo</string>
+    <string name="pref_imagem">Alterar foto</string>
+    <string name="pref_expimagem">Adicione ou altere uma imagem para o seu perfil</string>
+    <string name="pref_termos">Termos e Condições de Uso</string>
+    <string name="pref_sobre">Sobre o SeVira</string>
+    <string name="pref_username">Alterar nome de usuário</string>
+    <string name="pref_excluir">Excluir minha conta</string>
+    <string name="pref_expexcluir">Apague todos os seus dados do nosso banco de dados</string>
+    <string name="pref_logout">Logout</string>
+    <string name="pref_explogout">Desconectar do aplicativo</string>
 
 
 </resources>

@@ -20,4 +20,10 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="AppTheme.Settings" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="colorPrimary">@color/pl3</item>
+        <item name="colorPrimaryDark">@color/pl4</item>
+        <item name="colorAccent">@color/pl2</item>
+    </style>
+
 </resources>

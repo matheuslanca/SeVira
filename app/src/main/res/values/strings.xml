@@ -22,6 +22,7 @@
     <string name="esqueci_minha_senha">Esqueci minha senha</string>
     <string name="perfil">Perfil</string>
     <string name="reportinformado">Reportes informados</string>
+    <string name="config">Configurações</string>
 
     <string name="campos_vazios">Preencha todos os campos!</string>
 
@@ -118,7 +119,8 @@
         <item>Butantã</item>
         <item>São Paulo - Morumbi</item>
     </string-array>
-    <string name="pref_perfil">Informações de Usuário</string>
+
+    <string name="pref_perfil">Informações do usuário</string>
     <string name="pref_app">Informações do aplicativo</string>
     <string name="pref_imagem">Alterar foto</string>
     <string name="pref_expimagem">Adicione ou altere uma imagem para o seu perfil</string>

@@ -6,28 +6,28 @@
             android:title="@string/pref_username"
             android:key="prefUsername"/>
 
-        <EditTextPreference
+        <Preference
             android:title="@string/pref_imagem"
             android:key="prefImage"
             android:summary="@string/pref_expimagem" />
 
         <Preference android:title="@string/pref_logout"
-            android:key="@string/prefLogout"
+            android:key="prefLogout"
             android:summary="@string/pref_explogout"/>
-
-        <Preference android:title="@string/pref_excluir"
-            android:key="@string/prefExcluir"
-            android:summary="@string/pref_expexcluir"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_app" >
 
         <Preference android:title="@string/pref_termos"
-            android:key="@string/prefTermos" />
+            android:key="prefTermos" />
 
         <Preference android:title="@string/pref_sobre"
-            android:key="@string/prefSobre" />
+            android:key="prefSobre" />
+
+        <Preference android:title="@string/pref_excluir"
+            android:key="prefExcluir"
+            android:summary="@string/pref_expexcluir"/>
 
     </PreferenceCategory>
 

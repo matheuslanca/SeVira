@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_perfil" >
+        <EditTextPreference
+            android:title="@string/pref_username"
+            android:key="prefUsername"/>
+
+        <EditTextPreference
+            android:title="@string/pref_imagem"
+            android:key="prefImage"
+            android:summary="@string/pref_expimagem" />
+
+        <Preference android:title="@string/pref_logout"
+            android:key="@string/prefLogout"
+            android:summary="@string/pref_explogout"/>
+
+        <Preference android:title="@string/pref_excluir"
+            android:key="@string/prefExcluir"
+            android:summary="@string/pref_expexcluir"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_app" >
+
+        <Preference android:title="@string/pref_termos"
+            android:key="@string/prefTermos" />
+
+        <Preference android:title="@string/pref_sobre"
+            android:key="@string/prefSobre" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,6 +1,8 @@
 package com.subwayinovators.sevira;
 
 import android.content.Intent;
+import android.preference.PreferenceActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,8 +36,10 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(new Intent(SettingsActivity.this, LoginActivity.class));
             }
         });
-    }
 
+
+
+    }
 
 
 

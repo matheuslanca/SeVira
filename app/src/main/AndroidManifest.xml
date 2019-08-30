@@ -10,13 +10,18 @@
         android:roundIcon="@drawable/sevira"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.subwayinovators.sevira.ReportsActivity"></activity>
-        <activity android:name="com.subwayinovators.sevira.LauncherActivity">
+        <activity android:name="com.subwayinovators.sevira.SplashScreen"
+            android:theme="@style/AppTheme.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.subwayinovators.sevira.ReportsActivity" />
+        <activity android:name="com.subwayinovators.sevira.LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity

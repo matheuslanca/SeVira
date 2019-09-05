@@ -90,6 +90,7 @@ public class ReportsActivity extends AppCompatActivity {
         };
 
         databaseReference.addListenerForSingleValueEvent(valueEventListener);
+        databaseReference.keepSynced(true);
 
 
         recyclerView = findViewById(R.id.listaEstacoes);

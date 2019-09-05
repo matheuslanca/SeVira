@@ -23,6 +23,8 @@
     <string name="perfil">Perfil</string>
     <string name="reportinformado">Reportes informados</string>
     <string name="config">Configurações</string>
+    <string name="ok">Tenho certeza</string>
+    <string name="cancel">Cancelar</string>
 
     <string name="campos_vazios">Preencha todos os campos!</string>
 
@@ -122,15 +124,12 @@
 
     <string name="pref_perfil">Informações do usuário</string>
     <string name="pref_app">Informações do aplicativo</string>
-    <string name="pref_imagem">Alterar foto</string>
-    <string name="pref_expimagem">Adicione ou altere uma imagem para o seu perfil</string>
+    <string name="pref_imagem">Altere a sua foto de perfil</string>
     <string name="pref_termos">Termos e Condições de Uso</string>
     <string name="pref_sobre">Sobre o SeVira</string>
     <string name="pref_username">Alterar nome de usuário</string>
     <string name="pref_excluir">Excluir minha conta</string>
-    <string name="pref_expexcluir">Apague todos os seus dados do nosso banco de dados</string>
-    <string name="pref_logout">Logout</string>
-    <string name="pref_explogout">Desconectar do aplicativo</string>
+    <string name="pref_logout">Desconectar do aplicativo</string>
 
 
 </resources>

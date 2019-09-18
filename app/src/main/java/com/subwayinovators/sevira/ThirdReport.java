@@ -311,6 +311,7 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
                                     databaseReference.child("Usuarios").child(user.getUid() + "").child("Denuncias").child(reportInformation.id).setValue(reportInformation);
                                 }
                                 startActivity(new Intent(ThirdReport.this, MainActivity.class));
+                                finish();
                             } else {
                                 databaseReference.removeEventListener(valueEventListener);
                                 Toast.makeText(ThirdReport.this, "Ocorreu um erro", Toast.LENGTH_SHORT).show();
@@ -322,6 +323,15 @@ public class ThirdReport extends AppCompatActivity implements View.OnClickListen
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(ThirdReport.this, SecondReport.class);
+        i.putExtra("linha1", linhaFinal + "");
+        startActivity(i);
+        finish();
     }
 
 

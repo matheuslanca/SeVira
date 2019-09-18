@@ -74,10 +74,8 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_cadastro);
 
 
-        if (!FacebookSdk.isInitialized()) {
-            FacebookSdk.sdkInitialize(getApplicationContext());
-            AppEventsLogger.activateApp(getApplication());
-        }
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(getApplication());
 
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
@@ -141,7 +139,6 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void loginFacebook (final AccessToken accessToken) {
-        Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_SHORT).show();
         AuthCredential authCredential = FacebookAuthProvider.getCredential(accessToken.getToken());
         auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

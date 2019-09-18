@@ -92,13 +92,21 @@ public class ProfileActivity extends AppCompatActivity {
         valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapshot : dataSnapshot.child("Usuarios").child(auth.getUid()).child("Denuncias").getChildren()) {
+                    report.add(childSnapshot.getValue(ReportInformation.class).getReport());
+                    horario.add(childSnapshot.getValue(ReportInformation.class).getHora());
+                    estacao.add(childSnapshot.getValue(ReportInformation.class).getEstacao());
+                    String id = (childSnapshot.getValue(ReportInformation.class).getId());
+                    linhas.add(Character.getNumericValue(id.charAt(17)));
+                    cor.add(getIntLinha(Character.getNumericValue(id.charAt(17))));
+                }
+
                 userInformation.setUsername(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getUsername());
                 userInformation.setPontuacao(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getPontuacao());
                 userInformation.setEmail(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getEmail());
                 userInformation.setLevel(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getLevel());
                 userInformation.setLinhaFavorita(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getLinhaFavorita());
                 userInformation.setProfilepic(dataSnapshot.child("Usuarios").child(user.getUid()).getValue(UserInformation.class).getProfilepic());
-
 
                 String level = 1 + userInformation.getPontuacao() / levelSize + "";
                 String pontuacao = userInformation.getPontuacao() + "";
@@ -122,7 +130,6 @@ public class ProfileActivity extends AppCompatActivity {
                     Picasso.get().load(userInformation.getProfilepic()).into(imgProfilePic);
                 }
 
-
             }
 
             @Override
@@ -138,28 +145,6 @@ public class ProfileActivity extends AppCompatActivity {
         cor = new ArrayList<Integer>();
         linhas = new ArrayList<Integer>();
 
-        databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Usuarios").child(user.getUid());
-        databaseReference.keepSynced(true);
-        valueEventListener1 = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot childSnapshot : dataSnapshot.child("Denuncias").getChildren()) {
-                    report.add(childSnapshot.getValue(ReportInformation.class).getReport());
-                    horario.add(childSnapshot.getValue(ReportInformation.class).getHora());
-                    estacao.add(childSnapshot.getValue(ReportInformation.class).getEstacao());
-                    String id = (childSnapshot.getValue(ReportInformation.class).getId());
-                    linhas.add(Character.getNumericValue(id.charAt(17)));
-                    cor.add(getIntLinha(Character.getNumericValue(id.charAt(17))));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-
-        databaseReference1.addListenerForSingleValueEvent(valueEventListener1);
 
         layoutManager = new LinearLayoutManager(this);
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
@@ -210,6 +195,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         return 0;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ProfileActivity.this, FirstReport.class));
+        finish();
     }
 
 }

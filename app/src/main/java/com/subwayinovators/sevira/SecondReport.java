@@ -64,6 +64,7 @@ public class SecondReport extends AppCompatActivity {
                 i.putExtra("linha", linha + "");
                 i.putExtra("idestacao", position + "");
                 startActivity(i);
+                finish();
             }
         }));
 
@@ -84,5 +85,6 @@ public class SecondReport extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(SecondReport.this, FirstReport.class));
+        finish();
     }
 }

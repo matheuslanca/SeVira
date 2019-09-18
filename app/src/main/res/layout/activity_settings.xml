@@ -7,9 +7,182 @@
     android:layout_height="match_parent"
     tools:context="com.subwayinovators.sevira.SettingsActivity">
 
-    <ListView
-        android:id="@android:id/list"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="70dp"
+        android:id="@+id/actionBar"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@mipmap/ic_arrow_back_black_24dp" />
+
+        <TextView
+            android:id="@+id/txtPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/config"
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/pref_perfil"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:text="@string/pref_perfil" />
+
+        <Button
+            android:id="@+id/btnUsername"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/pref_perfil"
+            android:layout_marginTop="5dp"
+            android:background="#CCFFFFFF"
+            android:gravity="start|center_vertical"
+            android:paddingStart="30dp"
+            android:text="@string/pref_username"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+        <ImageView
+            android:id="@+id/hr2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnUsername"
+            android:background="#3A3A3A" />
+
+        <ImageView
+            android:id="@+id/hr3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnFoto"
+            android:background="#3A3A3A" />
+
+        <ImageView
+            android:id="@+id/hr4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnSobre"
+            android:background="#3A3A3A" />
+
+        <ImageView
+            android:id="@+id/hr1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnExcluir"
+            android:background="#3A3A3A" />
+
+        <ImageView
+            android:id="@+id/hr"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnLogout"
+            android:background="#3A3A3A" />
+
+        <ImageView
+            android:id="@+id/hr5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnTermos"
+            android:background="#3A3A3A" />
+
+        <Button
+            android:id="@+id/btnFoto"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/btnUsername"
+            android:background="#CCFFFFFF"
+            android:gravity="start|center_vertical"
+            android:paddingStart="30dp"
+            android:text="@string/pref_imagem"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/btnFoto"
+            android:background="#CCFFFFFF"
+            android:gravity="start|center_vertical"
+            android:paddingStart="30dp"
+            android:text="@string/pref_logout"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/pref_app"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/btnLogout"
+            android:textColor="#000"
+            android:text="@string/pref_app" />
+
+        <Button
+            android:id="@+id/btnTermos"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/pref_app"
+            android:layout_marginTop="5dp"
+            android:background="#CCFFFFFF"
+            android:gravity="start|center_vertical"
+            android:paddingStart="30dp"
+            android:text="@string/pref_termos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Button
+            android:id="@+id/btnSobre"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/btnTermos"
+            android:background="#CCFFFFFF"
+            android:gravity="start|center_vertical"
+            android:paddingStart="30dp"
+            android:text="@string/pref_sobre"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Button
+            android:id="@+id/btnExcluir"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/btnSobre"
+            android:background="#CCFFFFFF"
+            android:gravity="start|center_vertical"
+            android:paddingStart="30dp"
+            android:text="@string/pref_excluir"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
         databaseReference.addValueEventListener(valueEventListener);
+        databaseReference.keepSynced(true);
 
 
 
@@ -199,14 +200,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v == fabReport){
             startActivity(new Intent(MainActivity.this, FirstReport.class));
+            finish();
         }
 
         if(v == imgProfile){
             if(auth.getCurrentUser() != null){
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                finish();
             } else {
                 Toast.makeText(this, "Faça login para acessar o seu perfil", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
             }
         }
 

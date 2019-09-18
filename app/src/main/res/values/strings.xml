@@ -19,10 +19,13 @@
     <string name="login">Login</string>
     <string name="questao1">Em que linha você está?</string>
     <string name="questao2">Em qual estação?</string>
+    <string name="questao3">O que está acontecendo?</string>
     <string name="esqueci_minha_senha">Esqueci minha senha</string>
     <string name="perfil">Perfil</string>
     <string name="reportinformado">Reportes informados</string>
     <string name="config">Configurações</string>
+    <string name="ok">Tenho certeza</string>
+    <string name="cancel">Cancelar</string>
 
     <string name="campos_vazios">Preencha todos os campos!</string>
 
@@ -45,6 +48,16 @@
     <string name="facebook_app_id">357620281774514</string>
     <string name="fb_login_protocol_scheme">fb357620281774514</string>
 
+    <string name="pref_perfil">Informações do usuário</string>
+    <string name="pref_app">Informações do aplicativo</string>
+
+    <string name="pref_imagem">Altere a sua foto de perfil</string>
+    <string name="pref_termos">Termos de Uso</string>
+
+    <string name="pref_sobre">Sobre o SeVira</string>
+    <string name="pref_username">Alterar nome de usuário</string>
+    <string name="pref_excluir">Excluir minha conta</string>
+    <string name="pref_logout">Desconectar do aplicativo</string>
     <string-array name="estacoes_linhaazul">
         <item>Tucuruvi</item>
         <item>Parada Inglesa</item>
@@ -86,7 +99,6 @@
         <item>Tamanduateí</item>
         <item>Vila Prudente</item>
     </string-array>
-
     <string-array name="estacoes_linhavermelha">
         <item>Palmeiras - Barra Funda</item>
         <item>Marechal Deodoro</item>
@@ -119,18 +131,6 @@
         <item>Butantã</item>
         <item>São Paulo - Morumbi</item>
     </string-array>
-
-    <string name="pref_perfil">Informações do usuário</string>
-    <string name="pref_app">Informações do aplicativo</string>
-    <string name="pref_imagem">Alterar foto</string>
-    <string name="pref_expimagem">Adicione ou altere uma imagem para o seu perfil</string>
-    <string name="pref_termos">Termos e Condições de Uso</string>
-    <string name="pref_sobre">Sobre o SeVira</string>
-    <string name="pref_username">Alterar nome de usuário</string>
-    <string name="pref_excluir">Excluir minha conta</string>
-    <string name="pref_expexcluir">Apague todos os seus dados do nosso banco de dados</string>
-    <string name="pref_logout">Logout</string>
-    <string name="pref_explogout">Desconectar do aplicativo</string>
 
 
 </resources>

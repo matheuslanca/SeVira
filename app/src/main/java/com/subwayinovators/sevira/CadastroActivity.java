@@ -2,10 +2,14 @@ package com.subwayinovators.sevira;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +47,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.firebase.database.core.Context;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -74,6 +80,21 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_cadastro);
 
 
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i("hash", "printHashKey() Hash Key: " + hashKey);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("hash", "printHashKey()", e);
+        } catch (Exception e) {
+            Log.e("hash", "printHashKey()", e);
+        }
+
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplication());
 
@@ -92,6 +113,9 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
         callbackManager = CallbackManager.Factory.create();
         loginManager = LoginManager.getInstance();
+
+
+
 
 
 
@@ -282,20 +306,10 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         callbackManager.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
 
     }
 
@@ -313,6 +327,5 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 }
